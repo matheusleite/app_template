@@ -1,5 +1,6 @@
 import 'package:app_template/component/edit_text.dart';
 import 'package:app_template/util/navigation/nav_slide_from_right.dart';
+import 'package:app_template/view/login/forgot_password.dart';
 import 'package:app_template/view/login/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/components/button/gf_button.dart';
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void goToResetPassword() {
-
+    Navigator.push(context, NavSlideFromRight(page: ForgotPasswordPage()));
   }
 
   void goToSignUp() {

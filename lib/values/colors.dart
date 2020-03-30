@@ -10,6 +10,7 @@ final Color primaryColorDark = Color(0xFFa5acb8);
 
 final Color darkColor = Colors.black;
 
+final Color textColor = Colors.black;
 final Color disabledTextColor = Color(0xFFa1a1a1);
 final Color disabledColor = Colors.black38;
 final Color disabledListViewColor = Color(0xFFf7f7f7);
