@@ -24,6 +24,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   getflutter:
   sk_onboarding_screen:
+
+  #facebook login handle
+  flutter_facebook_login:
   
   #architecture
   mobx:
