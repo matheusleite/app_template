@@ -3,7 +3,7 @@ import 'package:app_template/util/storage/storage.dart';
 
 class HttpHelper {
   static Dio _client;
-  static String urlBase = "http://127.0.0.1:3333"; //URL base das APIs
+  static String urlBase = "http://192.168.0.2:3333"; //URL base das APIs
 
   static Future<Dio> _getInstance({ bool isAuth, Map<String, dynamic> headers }) async {
     if (_client == null) _client = Dio();
@@ -21,11 +21,11 @@ class HttpHelper {
       return _client;
     }
 
-    final token = await StorageHelper.get('token');
+    //final token = await StorageHelper.get('token');
 
     _client.options.headers = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer $token'
+      //'Authorization': 'Bearer $token'
     };
 
     return _client;
