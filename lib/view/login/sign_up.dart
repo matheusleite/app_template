@@ -1,11 +1,14 @@
+import 'package:app_template/component/alert.dart';
 import 'package:app_template/component/edit_text.dart';
 import 'package:app_template/component/form_text_field.dart';
+import 'package:app_template/component/loader.dart';
 import 'package:app_template/component/validator.dart';
 import 'package:app_template/repository/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/components/button/gf_button.dart';
 import 'package:getflutter/components/button/gf_social_button.dart';
 import 'package:getflutter/types/gf_button_type.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -71,7 +74,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   text: 'Cadastro com Facebook',
                   icon: Icon(Icons.share),
                 ),
-                SizedBox(height: 100),
+                SizedBox(height: 40),
                 Divider(),
                 SizedBox(height: 10),
                 GestureDetector(
@@ -83,34 +86,27 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  String _validateName(String value) {
-    String patttern = r'(^[a-zA-Z ]*$)';
-    RegExp regExp = new RegExp(patttern);
-    if (value.length == 0) {
-      return "Informe o nome";
-    } else if (!regExp.hasMatch(value)) {
-      return "O nome deve conter caracteres de a-z ou A-Z";
-    }
-    return null;
-  }
-
   _signUp() async {
     if (_key.currentState.validate()) {
       _key.currentState.save();
 
-      //TODO: show loading
+      //show loading
+      Loader().show();
 
       final response = await AuthRepository().signUp(
           _nameController.text,
           _emailController.text,
           _passwordController.text);
 
-      //TODO: remove loading
+      //remove loading
+      Loader().hide();
 
       if (response.status == true) {
         //handle success
+        successAlert();
       } else {
         //handle error
+        errorAlert(response.message);
       }
 
     } else {
@@ -119,5 +115,15 @@ class _SignUpPageState extends State<SignUpPage> {
       });
     }
 
+  }
+
+  errorAlert(String error) {
+    var alert = Modal(type: AlertType.error, title: "Desculpe...", message: error).setAlert(context);
+    alert.show();
+  }
+
+  successAlert() {
+    var alert = Modal(type: AlertType.info, title: "Pronto!", message: "Cadastro realizado com sucesso!").setAlert(context);
+    alert.show();
   }
 }

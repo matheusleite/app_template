@@ -45,6 +45,8 @@ dependencies:
   share:
   image_picker:
   dio:
+  flutter_easyloading:
+  rflutter_alert:
 
 dev_dependencies:
   flutter_test:

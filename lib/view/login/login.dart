@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
             text: 'Login com Facebook',
             icon: Icon(Icons.share),
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 40),
           Divider(),
           SizedBox(height: 10),
           GestureDetector(

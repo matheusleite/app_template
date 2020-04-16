@@ -1,5 +1,5 @@
 class Response {
-  int status;
+  bool status;
   String message;
   dynamic data;
 

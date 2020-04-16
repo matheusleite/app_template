@@ -22,6 +22,8 @@ class AuthRepository {
       response.message = result.data["error"];
     }).catchError((e) {
       print(e);
+      response.status = false;
+      response.message = e.toString();
     });
 
     return response;
