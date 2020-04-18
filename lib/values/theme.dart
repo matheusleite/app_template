@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'colors.dart' as colors;
 
 final ThemeData theme = ThemeData(
+  fontFamily: 'Qarmic',
   primaryColor: colors.primaryColor,
   accentColor: colors.accentColor,
   scaffoldBackgroundColor: colors.backgroundColor,

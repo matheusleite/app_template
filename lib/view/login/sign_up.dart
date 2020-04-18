@@ -1,5 +1,4 @@
 import 'package:app_template/component/alert.dart';
-import 'package:app_template/component/edit_text.dart';
 import 'package:app_template/component/form_text_field.dart';
 import 'package:app_template/component/loader.dart';
 import 'package:app_template/component/validator.dart';
@@ -31,7 +30,8 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Form(
           key: _key,
           autovalidate: _validate,
-          child: Column(
+          child: SingleChildScrollView(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text('Cadastro',
@@ -43,9 +43,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(height: 30),
                 FormTextField(
                   controller: _nameController,
+                  validator: Validator().validateName,
                   keyboardType: TextInputType.text,
                   placeholder: "NOME",
-                  validator: Validator().validateName,
                 ),
                 SizedBox(height: 10),
                 FormTextField(
@@ -81,7 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Text('Já tem uma conta? Faça login', textAlign: TextAlign.center),
                   onTap: () {},
                 )
-              ])),
+              ]))),
         )
     );
   }

@@ -5,6 +5,15 @@ import 'package:flutter/material.dart';
 final Color accentColor = Color(0xFF5ccaba);
 final Color accentLightColor = Color(0xFF74dccc);
 
+final menuColors = [
+    Color.fromRGBO(14, 0, 255, 1),
+    Color.fromRGBO(0, 102, 255, 1),
+    Color.fromRGBO(0, 148, 255, 1),
+    Color.fromRGBO(0, 184, 255, 1),
+    Color.fromRGBO(0, 217, 255, 1),
+    Color.fromRGBO(43, 245, 255, 1)
+];
+
 final Color primaryColor = Colors.white;
 final Color primaryColorDark = Color(0xFFa5acb8);
 
