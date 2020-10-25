@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:app_template/component/alert.dart';
-import 'package:app_template/component/edit_text.dart';
 import 'package:app_template/component/form_text_field.dart';
 import 'package:app_template/component/loader.dart';
 import 'package:app_template/component/validator.dart';
 import 'package:app_template/repository/auth.dart';
 import 'package:app_template/util/navigation/nav_slide_from_right.dart';
+import 'package:app_template/values/color/colors.dart';
 import 'package:app_template/view/home/home.dart';
 import 'package:app_template/view/login/forgot_password.dart';
 import 'package:app_template/view/login/sign_up.dart';
@@ -16,7 +16,6 @@ import 'package:getflutter/components/button/gf_social_button.dart';
 import 'package:getflutter/types/gf_button_type.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:dio/dio.dart';
-import 'package:app_template/values/colors.dart' as colors;
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,8 +24,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool isFbLoggedIn = false;
 
+  bool isFbLoggedIn = false;
   GlobalKey<FormState> _key = new GlobalKey();
   bool _validate = false;
 
@@ -36,9 +35,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: colors.accentColor,
+      backgroundColor: ColorManager.instance.backgroundColor,
       body: Container(
-        padding: EdgeInsets.fromLTRB(30, 150, 30, 50),
+        padding: EdgeInsets.fromLTRB(30, 100, 30, 00),
         child: Form(
           key: _key,
           autovalidate: _validate,
@@ -50,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                   fontSize: 60,
+                  color: ColorManager.instance.textColor,
                   fontWeight: FontWeight.w600
                 )),
                 SizedBox(height: 30),
@@ -65,32 +65,34 @@ class _LoginPageState extends State<LoginPage> {
                   validator: Validator().validatePassword,
                   password: true,
                   placeholder: "SENHA",
-          ),
-          SizedBox(height: 05),
-          GestureDetector(
-            child: Text('Esqueci minha senha', textAlign: TextAlign.end),
-            onTap: goToResetPassword,
-          ),
-          SizedBox(height: 30),
-          GFButton(
-            onPressed: _login,
-            text: 'Entrar',
-            fullWidthButton: true,
-            type: GFButtonType.solid,
-          ),
-          SizedBox(height: 10),
-          GFSocialButton(
-            onPressed: facebookLogin,
-            text: 'Login com Facebook',
-            icon: Icon(Icons.share),
-          ),
-          SizedBox(height: 40),
-          Divider(),
-          SizedBox(height: 10),
-          GestureDetector(
-            child: Text('Ainda não tem conta? Criar nova conta', textAlign: TextAlign.center),
-            onTap: goToSignUp,
-          )
+                ),
+                SizedBox(height: 05),
+                GestureDetector(
+                  child: Text('Esqueci minha senha', textAlign: TextAlign.end),
+                  onTap: goToResetPassword,
+                ),
+                SizedBox(height: 30),
+                GFButton(
+                  onPressed: _login,
+                  text: 'Entrar',
+                  fullWidthButton: true,
+                  type: GFButtonType.solid,
+                ),
+                SizedBox(height: 10),
+                GFSocialButton(
+                  onPressed: facebookLogin,
+                  text: 'Login com Facebook',
+                  icon: Icon(Icons.share),
+                ),
+                SizedBox(height: 40),
+                Divider(),
+                SizedBox(height: 10),
+                GestureDetector(
+                  child: Text('Ainda não tem conta? Criar nova conta',
+                    style: TextStyle(
+                      color: ColorManager.instance.textColor),textAlign: TextAlign.center),
+                  onTap: goToSignUp,
+                )
       ]))))
     );
   }
@@ -143,6 +145,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _login() async {
+    _goToHome();
+
     if (_key.currentState.validate()) {
       _key.currentState.save();
 

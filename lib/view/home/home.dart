@@ -1,7 +1,7 @@
-import 'package:app_template/values/colors.dart';
-import 'package:app_template/values/colors.dart';
+import 'package:app_template/values/color/colors.dart';
+import 'package:app_template/values/color/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:app_template/values/colors.dart' as colors;
+import 'package:app_template/values/color/colors.dart';
 import 'package:getflutter/getflutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePage> {
 
   double height = 0;
   double itemsHeight = 0;
-  List menuColors = colors.menuColors;
+  List menuColors = [ColorManager.instance.accentColor];
   List menuItems = ["JUST PLAY", "STEP-BY-STEP", "BATTLE", "KIDS ZONE", "MY PROFILE"];
 
   @override
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       itemsHeight = height/menuItems.length;
 
       return Scaffold(
-        //backgroundColor: colors.accentColor,
+        backgroundColor: ColorManager.instance.accentColor,
             body: Container(
                 //padding: EdgeInsets.fromLTRB(30, 150, 30, 50),
                 child: ListView.builder(
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                                 elevation: 0,
                                 borderOnForeground: false,
                                 shape: ContinuousRectangleBorder(),
-                                color: menuColors[index],
+                                color: menuColors[0],
                                 margin: EdgeInsets.all(0),
                                 child: Container(
                                     height: itemsHeight,

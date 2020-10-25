@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_template/values/colors.dart' as colors;
+import 'package:app_template/values/color/colors.dart';
 
 class FormTextField extends StatelessWidget {
 
@@ -30,8 +30,8 @@ class FormTextField extends StatelessWidget {
             labelText: placeholder,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                  color: colors.primaryColorDark, //cor da borda
-                  width: 0.0
+                  color: ColorManager.instance.textColor, //cor da borda
+                  width: 1
               ),
             ),
             hintStyle: TextStyle(
@@ -40,18 +40,18 @@ class FormTextField extends StatelessWidget {
             ),
             labelStyle: TextStyle(
                 fontSize: 16,
-                color: colors.primaryColorDark //cor da label
+                color: ColorManager.instance.textColor //cor da label
             ),
             border: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: colors.primaryColorDark, //cor da label quando esta com focus
-                    width: 0
+                    color: ColorManager.instance.textColor, //cor da label quando esta com focus
+                    width: 1
                 )
             ),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: colors.primaryColorDark, //cor da label quando esta com focus
-                    width: 0
+                    color: ColorManager.instance.textColor, //cor da label quando esta com focus
+                    width: 3
                 )
             )
         )

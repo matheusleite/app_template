@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:app_template/values/colors.dart' as colors;
+import 'package:app_template/values/color/colors.dart';
 
 class Modal {
   final Function(dynamic) onPositive;
@@ -31,7 +31,7 @@ class Modal {
         ),
       ),
       titleStyle: TextStyle(
-        color: colors.primaryColor,
+        color: ColorManager.instance.primaryColor,
       ),
     );
 

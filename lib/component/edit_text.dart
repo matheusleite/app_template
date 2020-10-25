@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_template/values/colors.dart' as colors;
+import 'package:app_template/values/color/colors.dart';
 
 class EditText extends StatelessWidget {
 
@@ -32,7 +32,7 @@ class EditText extends StatelessWidget {
           maxLines: multiline == true ? null : 1,
           keyboardType: multiline == true ? TextInputType.multiline : keyboardType,
           style: TextStyle(
-            color: dark == true ? colors.backgroundColor : colors.primaryColor  //cor do texto ao digitar
+            color: ColorManager.instance.primaryColor  //cor do texto ao digitar
           ),
           autofocus: autofocus == null ? false : true,
           textCapitalization: TextCapitalization.none,
@@ -42,7 +42,7 @@ class EditText extends StatelessWidget {
             errorText: error,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: colors.primaryColorDark, //cor da borda 
+                color: ColorManager.instance.primaryColor, //cor da borda
                 width: 0.0
               ),
             ),
@@ -51,18 +51,18 @@ class EditText extends StatelessWidget {
               fontSize: 16
             ),
             labelStyle: TextStyle(
-              fontSize: 16, 
-              color: dark == true ? colors.backgroundColor : colors.primaryColorDark //cor da label
+              fontSize: 16,
+              color: ColorManager.instance.primaryColor //cor da label
             ),
             border: OutlineInputBorder(
               borderSide: BorderSide(
-                color: colors.primaryColorDark, //cor da label quando esta com focus
+                color: ColorManager.instance.accentColor, //cor da label quando esta com focus
                 width: 0
               )
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: dark == true ? colors.backgroundColor : colors.primaryColor, //cor da label quando esta com focus
+                color: ColorManager.instance.primaryColor, //cor da label quando esta com focus
                 width: 0
               )
             )
