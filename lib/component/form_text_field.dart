@@ -30,7 +30,7 @@ class FormTextField extends StatelessWidget {
             labelText: placeholder,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                  color: ColorManager.instance.textColor, //cor da borda
+                  color: StyleManager.instance.textColor, //cor da borda
                   width: 1
               ),
             ),
@@ -40,17 +40,17 @@ class FormTextField extends StatelessWidget {
             ),
             labelStyle: TextStyle(
                 fontSize: 16,
-                color: ColorManager.instance.textColor //cor da label
+                color: StyleManager.instance.textColor //cor da label
             ),
             border: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: ColorManager.instance.textColor, //cor da label quando esta com focus
+                    color: StyleManager.instance.textColor, //cor da label quando esta com focus
                     width: 1
                 )
             ),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: ColorManager.instance.textColor, //cor da label quando esta com focus
+                    color: StyleManager.instance.textColor, //cor da label quando esta com focus
                     width: 3
                 )
             )

@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 
-class ColorManager {
+class StyleManager {
 
     bool isDark;
+    String fontFamily = 'Manrope';
 
     //list of colors
     //clean theme is default
-    Color accentColor = Colors.greenAccent;
+    Color accentColor = Colors.blueAccent;
     Color primaryColor = Colors.white;
-    Color textColor = Colors.black45;
+    Color textColor = Colors.black;
     Color secondaryTextColor = Colors.grey;
     Color backgroundColor = Colors.white;
     Color darkColor = Colors.black45;
 
     //singleton setting
-    static final ColorManager _singleton = new ColorManager._internal();
-    ColorManager._internal();
-    static ColorManager get instance => _singleton;
+    static final StyleManager _singleton = new StyleManager._internal();
+    StyleManager._internal();
+    static StyleManager get instance => _singleton;
 
     init(BuildContext context) {
         final Brightness brightnessValue = MediaQuery.of(context).platformBrightness;
@@ -28,7 +29,7 @@ class ColorManager {
             primaryColor = Colors.black45;
             textColor = Colors.white;
             darkColor = Colors.white;
-            backgroundColor = Colors.black12;
+            backgroundColor = Colors.white10;
         }
     }
 
@@ -38,6 +39,10 @@ class ColorManager {
 
     getTextColor() {
         return textColor;
+    }
+
+    gradient() {
+        return [Colors.blueAccent, Colors.blue];
     }
 
 }

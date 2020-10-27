@@ -1,8 +1,9 @@
-import 'package:app_template/component/form_text_field.dart';
-import 'package:app_template/component/validator.dart';
 // import 'package:app_template/values/colors.dart' as colors;
 
+import 'package:app_template/component/header.dart';
+import 'package:app_template/values/color/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -10,41 +11,38 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
-  GlobalKey<FormState> _key = new GlobalKey();
-  bool _validate = false;
-
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-
+// children: [
+//         PageHeader(title: 'Meu Perfil'),
+//       ],
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: colors.accentColor,
+      backgroundColor: StyleManager.instance.backgroundColor,
       body: Container(
-        padding: EdgeInsets.fromLTRB(30, 150, 30, 50),
-        child: Form(
-          key: _key,
-          autovalidate: _validate,
+        // padding: EdgeInsets.fromLTRB(20, 00, 20, 00),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+                PageHeader(title: 'Perfil'),
                 Text('Isaias Melo',
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                  color: StyleManager.instance.textColor,
                   fontSize: 32,
                   fontWeight: FontWeight.w600
                 )),
                 Text('isaias@email.com',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: StyleManager.instance.backgroundColor,
+                  color: StyleManager.instance.textColor,
                   fontSize: 18,
                   fontWeight: FontWeight.w600
                 )),
                 SizedBox(height: 60),
                 Card(
+                  color: StyleManager.instance.backgroundColor,
                   child: Padding(
                     padding: EdgeInsets.all(16),
                     child: 
@@ -54,31 +52,46 @@ class _ProfilePageState extends State<ProfilePage> {
                         Text('CPF',
                           style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          color: StyleManager.instance.textColor,
                         )),
-                        Text('123.456.789-00 ')
+                        Text('123.456.789-00 ',
+                          style: TextStyle(
+                            color: StyleManager.instance.textColor,
+                          ),
+                        )
+                      ],
+                    )
+                  ),
+                ),
+
+                Card(
+                  color: StyleManager.instance.backgroundColor,
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: 
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text('Data de nascimento',
+                          style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: StyleManager.instance.textColor,
+                        )),
+                        Text('28/10/2005',
+                          style: TextStyle(
+                            color: StyleManager.instance.textColor,
+                          ),
+                        )
                       ],
                     )
                   ),
                 )
-
-                // FormTextField(
-                //   controller: _emailController,
-                //   validator: Validator().validateEmail,
-                //   keyboardType: TextInputType.emailAddress,
-                //   placeholder: "EMAIL",
-                // ),
-                // SizedBox(height: 10),
-                // FormTextField(
-                //   controller: _passwordController,
-                //   validator: Validator().validatePassword,
-                //   password: true,
-                //   placeholder: "SENHA",
-                // ),
           
-      ]))))
+              ]
+            )
+          )
+      )
     );
   }
-
-  
 
 }

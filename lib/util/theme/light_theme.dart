@@ -3,12 +3,12 @@ import '../../values/color/colors.dart';
 
 final ThemeData lightTheme = ThemeData(
     fontFamily: 'Manrope',
-    primaryColor: ColorManager.instance.primaryColor,
-    accentColor: ColorManager.instance.accentColor,
-    scaffoldBackgroundColor: ColorManager.instance.backgroundColor,
+    primaryColor: StyleManager.instance.primaryColor,
+    accentColor: StyleManager.instance.accentColor,
+    scaffoldBackgroundColor: StyleManager.instance.backgroundColor,
     appBarTheme: AppBarTheme(
-        color: ColorManager.instance.accentColor,
-        iconTheme: IconThemeData(color: ColorManager.instance.darkColor)),
+        color: StyleManager.instance.accentColor,
+        iconTheme: IconThemeData(color: StyleManager.instance.darkColor)),
     buttonTheme: ButtonThemeData(
-        buttonColor: ColorManager.instance.accentColor,
-        disabledColor: ColorManager.instance.darkColor));
+        buttonColor: StyleManager.instance.accentColor,
+        disabledColor: StyleManager.instance.darkColor));
