@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -41,6 +41,12 @@ dependencies:
   #navigation
   get: ^3.13.2
 
+  #alert
+  ndialog: ^3.1.0
+
+  #splash screen
+  flutter_native_splash: ^0.1.9
+
   #utils packages
   device_info:
   package_info:
@@ -48,8 +54,6 @@ dependencies:
   share:
   image_picker:
   dio:
-  flutter_easyloading:
-  rflutter_alert:
   provider: ^4.3.2+2
 
 dev_dependencies:

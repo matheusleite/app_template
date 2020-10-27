@@ -1,7 +1,6 @@
 import 'package:app_template/util/theme/dark_theme.dart';
 import 'package:app_template/util/theme/theme_provider.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:app_template/view/onboard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,13 +24,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    return FlutterEasyLoading(
-        child: MaterialApp(
-          title: 'App Template',
-          debugShowCheckedModeBanner: false,
-          theme: themeProvider.getThemeData,
-          darkTheme: darkTheme,
-          home: OnboardPage()
-        ));
+    return MaterialApp(
+      title: 'App Template',
+      debugShowCheckedModeBanner: false,
+      theme: themeProvider.getThemeData,
+      darkTheme: darkTheme,
+      home: OnboardPage()
+    );
   }
 }

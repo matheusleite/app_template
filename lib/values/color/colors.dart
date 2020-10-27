@@ -40,6 +40,10 @@ class ColorManager {
         return textColor;
     }
 
+    gradient() {
+        return [Colors.blueAccent, Colors.blue];
+    }
+
 }
 
 

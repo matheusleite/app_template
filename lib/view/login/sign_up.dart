@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:getflutter/components/button/gf_button.dart';
 import 'package:getflutter/components/button/gf_social_button.dart';
 import 'package:getflutter/types/gf_button_type.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -91,7 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
       _key.currentState.save();
 
       //show loading
-      Loader().show();
+      Loader().show(context);
 
       final response = await AuthRepository().signUp(
           _nameController.text,
@@ -118,12 +117,12 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   errorAlert(String error) {
-    var alert = Modal(type: AlertType.error, title: "Desculpe...", message: error).setAlert(context);
-    alert.show();
+    // var alert = Modal(type: AlertType.error, title: "Desculpe...", message: error).setAlert(context);
+    // alert.show();
   }
 
   successAlert() {
-    var alert = Modal(type: AlertType.info, title: "Pronto!", message: "Cadastro realizado com sucesso!").setAlert(context);
-    alert.show();
+    // var alert = Modal(type: AlertType.info, title: "Pronto!", message: "Cadastro realizado com sucesso!").setAlert(context);
+    // alert.show();
   }
 }

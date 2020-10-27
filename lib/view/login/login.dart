@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:app_template/component/alert.dart';
+import 'package:app_template/component/button.dart';
 import 'package:app_template/component/form_text_field.dart';
 import 'package:app_template/component/loader.dart';
 import 'package:app_template/component/validator.dart';
@@ -11,12 +13,9 @@ import 'package:app_template/view/home/home.dart';
 import 'package:app_template/view/login/forgot_password.dart';
 import 'package:app_template/view/login/sign_up.dart';
 import 'package:flutter/material.dart';
-import 'package:getflutter/components/button/gf_button.dart';
-import 'package:getflutter/components/button/gf_social_button.dart';
-import 'package:getflutter/types/gf_button_type.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:dio/dio.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -28,6 +27,8 @@ class _LoginPageState extends State<LoginPage> {
   bool isFbLoggedIn = false;
   GlobalKey<FormState> _key = new GlobalKey();
   bool _validate = false;
+
+  Loader loader = Loader();
 
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -72,17 +73,14 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: goToResetPassword,
                 ),
                 SizedBox(height: 30),
-                GFButton(
-                  onPressed: _login,
-                  text: 'Entrar',
-                  fullWidthButton: true,
-                  type: GFButtonType.solid,
+                AppButton(
+                  onTap: _login,
+                  title: 'Entrar',
                 ),
                 SizedBox(height: 10),
-                GFSocialButton(
-                  onPressed: facebookLogin,
-                  text: 'Login com Facebook',
-                  icon: Icon(Icons.share),
+                AppButton(
+                  onTap: facebookLogin,
+                  title: 'Login com Facebook',
                 ),
                 SizedBox(height: 40),
                 Divider(),
@@ -145,13 +143,19 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _login() async {
-    _goToHome();
+    loader.show(context);
+
+    Timer.periodic(
+      Duration(seconds: 5), (Timer timer) {
+      timer.cancel();
+      loader.hide();
+    });
 
     if (_key.currentState.validate()) {
       _key.currentState.save();
 
       //show loading
-      Loader().show();
+      // Loader().show();
 
       final response = await AuthRepository().login(
           _emailController.text,
@@ -177,13 +181,13 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   errorAlert(String error) {
-    var alert = Modal(type: AlertType.error, title: "Desculpe...", message: error).setAlert(context);
-    alert.show();
+    var modal =  Modal(title: "Desculpe...", message: error).setAlert(context);
+    modal.show(context);
   }
 
   successAlert() {
-    var alert = Modal(type: AlertType.info, title: "Pronto!", message: "Logado com sucesso!").setAlert(context);
-    alert.show();
+    var modal =  Modal(title: "Desculpe...", message: "OK").setAlert(context);
+    modal.show(context);
   }
 
 }

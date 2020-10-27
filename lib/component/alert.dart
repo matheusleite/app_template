@@ -1,52 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:app_template/values/color/colors.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:ndialog/ndialog.dart';
 
 class Modal {
   final Function(dynamic) onPositive;
   final Function(dynamic) onNegative;
   final String title;
   final String message;
-  final AlertType type;
+  NAlertDialog dialog;
 
-  const Modal({
-    this.type,
+  Modal({
     this.onPositive,
     this.onNegative,
     this.title,
     this.message
   });
 
-  Alert setAlert(BuildContext context) {
-    var alertStyle = AlertStyle(
-      animationType: AnimationType.fromTop,
-      isCloseButton: false,
-      isOverlayTapDismiss: false,
-      descStyle: TextStyle(fontWeight: FontWeight.bold),
-      animationDuration: Duration(milliseconds: 400),
-      alertBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(0.0),
-        side: BorderSide(
-          color: Colors.grey,
-        ),
+  NAlertDialog setAlert(BuildContext context) {
+    dialog = NAlertDialog(
+      backgroundColor: Colors.black.withOpacity(.80),
+      blur: 2,
+      dismissable: false,
+      dialogStyle: DialogStyle(
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        animatePopup: false,
+        elevation: 10.0
       ),
-      titleStyle: TextStyle(
-        color: ColorManager.instance.primaryColor,
-      ),
+      actions: <Widget>[
+        FlatButton(
+          child: Text("OK"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+      )],
+      title: Text(title,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Manrope',
+          fontWeight: FontWeight.w700,
+          fontSize: 20
+      )),
+      content: Text(message,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Manrope',
+          fontSize: 12
+        )),
     );
-
-    return Alert(
-      style: alertStyle,
-      context: context,
-      title: title,
-      type: type,
-      desc: message,
-      buttons: [
-        DialogButton(
-          child: Text("OK",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        onPressed: () => Navigator.pop(context),
-    )]);
+    return dialog;
   }
+
 }
