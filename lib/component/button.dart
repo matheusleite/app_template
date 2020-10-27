@@ -14,21 +14,24 @@ class AppButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: InkWell(
-        child: Container(
-          height: 50,
-          child: Center(
+          child: Container(
+        height: 50,
+        child: Center(
             child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 18, fontFamily: 'Manrope', color: ColorManager.instance.textColor, fontWeight: FontWeight.w900),
-            )),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(25)),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              colors: ColorManager.instance.gradient()),
-          ),
+          title,
+          style: TextStyle(
+              fontSize: 18,
+              fontFamily: StyleManager.instance.fontFamily,
+              color: StyleManager.instance.primaryColor,
+              fontWeight: FontWeight.w900),
         )),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(25)),
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              colors: StyleManager.instance.gradient()),
+        ),
+      )),
     );
   }
 }
@@ -38,17 +41,17 @@ class ImageButton extends StatelessWidget {
   final double height;
   final OnTapCallback onTap;
 
-  const ImageButton({Key key, this.image, this.onTap, this.height}) : super(key: key);
+  const ImageButton({Key key, this.image, this.onTap, this.height})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: InkWell(
-        child: Container(
-          height: height,
-          child: Image.asset(image, width: height, height: height)
-        )),
+          child: Container(
+              height: height,
+              child: Image.asset(image, width: height, height: height))),
     );
   }
 }

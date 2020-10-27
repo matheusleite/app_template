@@ -1,12 +1,10 @@
-import 'package:app_template/component/alert.dart';
+import 'package:app_template/component/button.dart';
 import 'package:app_template/component/form_text_field.dart';
 import 'package:app_template/component/loader.dart';
 import 'package:app_template/component/validator.dart';
 import 'package:app_template/repository/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:getflutter/components/button/gf_button.dart';
-import 'package:getflutter/components/button/gf_social_button.dart';
-import 'package:getflutter/types/gf_button_type.dart';
+import 'package:get/get.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -24,21 +22,19 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.fromLTRB(30, 150, 30, 50),
-        child: Form(
+        body: Container(
+      padding: EdgeInsets.fromLTRB(30, Get.height / 6, 30, 00),
+      child: Form(
           key: _key,
           autovalidate: _validate,
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
                 Text('Cadastro',
                     textAlign: TextAlign.left,
-                    style: TextStyle(
-                        fontSize: 60,
-                        fontWeight: FontWeight.w600
-                    )),
+                    style:
+                        TextStyle(fontSize: 50, fontWeight: FontWeight.w600)),
                 SizedBox(height: 30),
                 FormTextField(
                   controller: _nameController,
@@ -61,28 +57,22 @@ class _SignUpPageState extends State<SignUpPage> {
                   validator: Validator().validatePassword,
                 ),
                 SizedBox(height: 30),
-                GFButton(
-                  onPressed: _signUp,
-                  text: 'Enviar dados',
-                  fullWidthButton: true,
-                  type: GFButtonType.solid,
-                ),
-                SizedBox(height: 10),
-                GFSocialButton(
-                  onPressed: () {},
-                  text: 'Cadastro com Facebook',
-                  icon: Icon(Icons.share),
+                AppButton(
+                  onTap: _signUp,
+                  title: 'Cadastrar',
                 ),
                 SizedBox(height: 40),
                 Divider(),
                 SizedBox(height: 10),
                 GestureDetector(
-                  child: Text('Já tem uma conta? Faça login', textAlign: TextAlign.center),
-                  onTap: () {},
+                  child: Text('Já tem uma conta? Faça login',
+                      textAlign: TextAlign.center),
+                  onTap: () {
+                    Get.back();
+                  },
                 )
               ]))),
-        )
-    );
+    ));
   }
 
   _signUp() async {
@@ -92,10 +82,8 @@ class _SignUpPageState extends State<SignUpPage> {
       //show loading
       Loader().show(context);
 
-      final response = await AuthRepository().signUp(
-          _nameController.text,
-          _emailController.text,
-          _passwordController.text);
+      final response = await AuthRepository().signUp(_nameController.text,
+          _emailController.text, _passwordController.text);
 
       //remove loading
       Loader().hide();
@@ -107,13 +95,11 @@ class _SignUpPageState extends State<SignUpPage> {
         //handle error
         errorAlert(response.message);
       }
-
     } else {
       setState(() {
         _validate = true;
       });
     }
-
   }
 
   errorAlert(String error) {

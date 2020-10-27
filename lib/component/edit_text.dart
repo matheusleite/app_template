@@ -32,7 +32,7 @@ class EditText extends StatelessWidget {
           maxLines: multiline == true ? null : 1,
           keyboardType: multiline == true ? TextInputType.multiline : keyboardType,
           style: TextStyle(
-            color: ColorManager.instance.primaryColor  //cor do texto ao digitar
+            color: StyleManager.instance.textColor  //cor do texto ao digitar
           ),
           autofocus: autofocus == null ? false : true,
           textCapitalization: TextCapitalization.none,
@@ -42,8 +42,8 @@ class EditText extends StatelessWidget {
             errorText: error,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: ColorManager.instance.primaryColor, //cor da borda
-                width: 0.0
+                color: StyleManager.instance.textColor, //cor da borda
+                width: 1
               ),
             ),
             hintStyle: TextStyle(
@@ -52,18 +52,18 @@ class EditText extends StatelessWidget {
             ),
             labelStyle: TextStyle(
               fontSize: 16,
-              color: ColorManager.instance.primaryColor //cor da label
+              color: StyleManager.instance.textColor //cor da label
             ),
             border: OutlineInputBorder(
               borderSide: BorderSide(
-                color: ColorManager.instance.accentColor, //cor da label quando esta com focus
-                width: 0
+                color: StyleManager.instance.textColor, //cor da label quando esta com focus
+                width: 1
               )
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: ColorManager.instance.primaryColor, //cor da label quando esta com focus
-                width: 0
+                color: StyleManager.instance.textColor, //cor da label quando esta com focus
+                width: 3
               )
             )
           )

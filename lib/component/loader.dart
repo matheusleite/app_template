@@ -16,7 +16,7 @@ class Loader  {
       loadingWidget: Center(
         child: Container(
           alignment: Alignment.center,
-          child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(ColorManager.instance.accentColor))
+          child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(StyleManager.instance.accentColor))
         ),
       ),
       backgroundColor: Colors.black.withOpacity(.80),

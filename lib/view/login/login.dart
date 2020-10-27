@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:app_template/component/alert.dart';
+import 'package:app_template/component/modal.dart';
 import 'package:app_template/component/button.dart';
 import 'package:app_template/component/form_text_field.dart';
 import 'package:app_template/component/loader.dart';
 import 'package:app_template/component/validator.dart';
 import 'package:app_template/repository/auth.dart';
-import 'package:app_template/util/navigation/nav_slide_from_right.dart';
 import 'package:app_template/values/color/colors.dart';
 import 'package:app_template/view/home/home.dart';
 import 'package:app_template/view/login/forgot_password.dart';
@@ -36,9 +35,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorManager.instance.backgroundColor,
+      backgroundColor: StyleManager.instance.backgroundColor,
       body: Container(
-        padding: EdgeInsets.fromLTRB(30, 100, 30, 00),
+        padding: EdgeInsets.fromLTRB(30, Get.height/6, 30, 00),
         child: Form(
           key: _key,
           autovalidate: _validate,
@@ -50,7 +49,8 @@ class _LoginPageState extends State<LoginPage> {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                   fontSize: 60,
-                  color: ColorManager.instance.textColor,
+                  color: StyleManager.instance.textColor,
+                  fontFamily: StyleManager.instance.fontFamily,
                   fontWeight: FontWeight.w600
                 )),
                 SizedBox(height: 30),
@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                   child: Text('Ainda não tem conta? Criar nova conta',
                     style: TextStyle(
-                      color: ColorManager.instance.textColor),textAlign: TextAlign.center),
+                      color: StyleManager.instance.textColor),textAlign: TextAlign.center),
                   onTap: goToSignUp,
                 )
       ]))))
@@ -96,15 +96,15 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void goToResetPassword() {
-    Navigator.push(context, NavSlideFromRight(page: ForgotPasswordPage()));
+    Get.to(ForgotPasswordPage());
   }
 
   void goToSignUp() {
-    Navigator.push(context, NavSlideFromRight(page: SignUpPage()));
+    Get.to(SignUpPage());
   }
 
   _goToHome() {
-    Navigator.push(context, NavSlideFromRight(page: HomePage()));
+    Get.to(HomePage());
   }
 
   void facebookLogin() async {
@@ -149,6 +149,7 @@ class _LoginPageState extends State<LoginPage> {
       Duration(seconds: 5), (Timer timer) {
       timer.cancel();
       loader.hide();
+      _goToHome();
     });
 
     if (_key.currentState.validate()) {

@@ -1,7 +1,8 @@
+import 'package:app_template/component/button.dart';
 import 'package:app_template/component/edit_text.dart';
+import 'package:app_template/values/color/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:getflutter/components/button/gf_button.dart';
-import 'package:getflutter/types/gf_button_type.dart';
+import 'package:get/get.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   @override
@@ -13,15 +14,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.fromLTRB(30, 150, 30, 50),
+        padding: EdgeInsets.fromLTRB(30, Get.height/6, 30, 00),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
           Text('Esqueci minha senha', 
             textAlign: TextAlign.left,
             style: TextStyle(
-              fontSize: 60,
-              fontWeight: FontWeight.w600
+              fontSize: 50,
+              fontWeight: FontWeight.w600,
+              fontFamily: StyleManager.instance.fontFamily
             )),
           SizedBox(height: 30),
           EditText(
@@ -30,11 +32,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             placeholder: "EMAIL",
           ),
           SizedBox(height: 30),
-          GFButton(
-            onPressed: (){},
-            text: 'Enviar link',
-            fullWidthButton: true,
-            type: GFButtonType.solid,
+          AppButton(
+              onTap: () {},
+              title: 'Enviar link',
           ),
           SizedBox(height: 100),
           Divider(),
