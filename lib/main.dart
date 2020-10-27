@@ -1,5 +1,6 @@
 import 'package:app_template/util/theme/dark_theme.dart';
 import 'package:app_template/util/theme/theme_provider.dart';
+import 'package:app_template/view/profile/profile.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:app_template/view/onboard.dart';
