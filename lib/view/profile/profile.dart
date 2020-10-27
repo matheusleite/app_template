@@ -1,9 +1,6 @@
-// import 'package:app_template/values/colors.dart' as colors;
-
 import 'package:app_template/component/header.dart';
 import 'package:app_template/values/color/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -11,9 +8,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-// children: [
-//         PageHeader(title: 'Meu Perfil'),
-//       ],
   @override
   Widget build(BuildContext context) {
     return Scaffold(
