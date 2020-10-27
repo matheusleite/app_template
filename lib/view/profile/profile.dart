@@ -33,57 +33,38 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontSize: 16,
                       fontWeight: FontWeight.w600)),
               SizedBox(height: 60),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(20,0,20,0),
-                    child: Card(
-                      color: StyleManager.instance.backgroundColor,
-                      child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text('CPF',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: StyleManager.instance.textColor,
-                                  )),
-                              Text(
-                                '123.456.789-00 ',
-                                style: TextStyle(
-                                  color: StyleManager.instance.textColor,
-                                ),
-                              )
-                            ],
-                          )),
+              Card(
+                color: StyleManager.instance.backgroundColor,
+                child: ListTile(
+                  // leading: FlutterLogo(size: 56.0),
+                  title: Text('CPF',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: StyleManager.instance.textColor,
+                      )),
+                  subtitle: Text(
+                    '123.123.123-09',
+                    style: TextStyle(
+                      color: StyleManager.instance.textColor,
                     ),
                   ),
-                  Padding(
-                      padding: EdgeInsets.fromLTRB(20,0,20,0),
-                      child: Card(
-                        color: StyleManager.instance.backgroundColor,
-                        child: Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text('Data de nascimento',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: StyleManager.instance.textColor,
-                                    )),
-                                Text(
-                                  '28/10/2005',
-                                  style: TextStyle(
-                                    color: StyleManager.instance.textColor,
-                                  ),
-                                )
-                              ],
-                            )),
-                      ))
-                ],
+                ),
+              ),
+              Card(
+                color: StyleManager.instance.backgroundColor,
+                child: ListTile(
+                    // leading: FlutterLogo(size: 56.0),
+                    title: Text('Data de nascimento',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: StyleManager.instance.textColor,
+                        )),
+                    subtitle: Text(
+                      '28/10/2005',
+                      style: TextStyle(
+                        color: StyleManager.instance.textColor,
+                      ),
+                    )),
               ),
             ]))));
   }
